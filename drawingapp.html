@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2113.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; background-color: #0c0e12}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; background-color: #0c0e12; min-height: 17.0px}
+    span.s1 {text-decoration: underline ; font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1"><b>&lt;!DOCTYPE html&gt;</b></span></p>
+<p class="p1"><span class="s1"><b>&lt;html lang="en"&gt;</b></span></p>
+<p class="p1"><span class="s1"><b>&lt;head&gt;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;title&gt;Drawing App&lt;/title&gt;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;style&gt;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">        </span>body, html {</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>margin: 0;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>padding: 0;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>height: 100%;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>overflow: hidden;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">        </span>canvas {</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>display: block;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>background-color: white;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;/style&gt;</b></span></p>
+<p class="p1"><span class="s1"><b>&lt;/head&gt;</b></span></p>
+<p class="p1"><span class="s1"><b>&lt;body&gt;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;canvas id="drawingCanvas"&gt;&lt;/canvas&gt;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;script&gt;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">        </span>const canvas = document.getElementById('drawingCanvas');</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">        </span>const context = canvas.getContext('2d');</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">        </span>let drawing = false;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">        </span>let firstTouch = true;</b></span></p>
+<p class="p2"><span class="s1"><b></b></span><br></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">        </span>canvas.width = window.innerWidth;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">        </span>canvas.height = window.innerHeight;</b></span></p>
+<p class="p2"><span class="s1"><b></b></span><br></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">        </span>canvas.addEventListener('touchstart', (event) =&gt; {</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>if (firstTouch) {</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>drawing = true;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>context.beginPath();</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>context.moveTo(event.touches[0].clientX, event.touches[0].clientY);</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>} else {</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>context.clearRect(0, 0, canvas.width, canvas.height);</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>}</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">        </span>});</b></span></p>
+<p class="p2"><span class="s1"><b></b></span><br></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">        </span>canvas.addEventListener('touchmove', (event) =&gt; {</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>if (drawing) {</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>context.lineTo(event.touches[0].clientX, event.touches[0].clientY);</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>context.strokeStyle = 'red';</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>context.lineWidth = 15; // Толщина кисти увеличена в три раза</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>context.stroke();</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>}</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">        </span>});</b></span></p>
+<p class="p2"><span class="s1"><b></b></span><br></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">        </span>canvas.addEventListener('touchend', () =&gt; {</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>drawing = false;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>firstTouch = !firstTouch; // Переключение состояния первого прикосновения</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">        </span>});</b></span></p>
+<p class="p2"><span class="s1"><b></b></span><br></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">        </span>window.addEventListener('resize', () =&gt; {</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>canvas.width = window.innerWidth;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>canvas.height = window.innerHeight;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">        </span>});</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;/script&gt;</b></span></p>
+<p class="p1"><span class="s1"><b>&lt;/body&gt;</b></span></p>
+<p class="p1"><span class="s1"><b>&lt;/html&gt;</b></span></p>
+</body>
+</html>
